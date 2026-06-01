@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floracell - Konter, ATM Mini & Gadget Premium</title>
+    <!-- Google Fonts untuk font modern & FontAwesome untuk ikon menarik -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #2d3748;
+        }
+        
+        /* NAVBAR */
+        .navbar {
+            background: rgba(26, 32, 44, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .nav-logo h1 {
+            color: #2ecc71;
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .nav-logo span {
+            color: #a0aec0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #2ecc71;
+        }
+
+        /* HERO BANNER */
+        .hero {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 140px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            color: #cbd5e0;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CONTAINER */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* SECTION HEADER */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #2ecc71;
+            border-radius: 2px;
+        }
+        .section-title.oraimo-title::after {
+            background: #ffcc00; /* Warna khas oraimo */
+        }
+
+        /* SECTION 1: PULSA UTILITY */
+        .grid-pulsa {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 768px) {
+            .grid-pulsa { grid-template-columns: 1fr; }
+        }
+        
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #edf2f7;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #2ecc71;
+        }
+        .btn-submit {
+            width: 100%;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+        .btn-submit:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* TABLE PAKET DATA */
+        .table-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+        }
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .custom-table th {
+            background: #f7fafc;
+            padding: 15px;
+            font-weight: 700;
+            color: #4a5568;
+            border-bottom: 2px solid #edf2f7;
+        }
+        .custom-table td {
+            padding: 15px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 14px;
+        }
+        .badge-operator {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            display: inline-block;
+        }
+        .bg-tsel { background: #e74c3c; }
+        .bg-xl { background: #2980b9; }
+        
+        .btn-table {
+            background: #1a202c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-table:hover { opacity: 0.9; }
+
+        /* GRID CARDS (ATM & GADGETS) */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .card-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .card-content p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .card-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        .btn-card {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-align: center;
+        }
+        .btn-card:hover { background: #2b6cb0; }
+        
+        /* ORAIMO PREMIUM CARDS */
+        .oraimo-card {
+            border: 2px solid #fff;
+        }
+        .oraimo-card:hover {
+            border-color: #ffcc00;
+        }
+        .btn-oraimo {
+            background: #ffcc00;
+            color: #1a202c;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+        }
+        .btn-oraimo:hover {
+            background: #e6b800;
+        }
+        .badge-premium {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffcc00;
+            color: #1a202c;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+        .footer p { margin-bottom: 8px; }
+        .footer-sub { color: #718096; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR FIXED -->
+    <div class="navbar">
+        <div class="nav-logo">
+            <h1>Floracell <span>| Premium Hub</span></h1>
+        </div>
+        <div class="nav-links">
+            <a href="#pulsa"><i class="fa-solid fa-mobile-screen"></i> Pulsa & Data</a>
+            <a href="#atm"><i class="fa-solid fa-money-bill-transfer"></i> ATM Mini</a>
+            <a href="#gadget"><i class="fa-solid fa-plug"></i> Gadget</a>
+            <a href="#oraimo"><i class="fa-solid fa-star"></i> oraimo Zone</a>
+        </div>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero">
+        <h2>Satu Tempat, Semua Solusi Digital</h2>
+        <p>Nikmati kemudahan isi pulsa kilat, tarik tunai tanpa antre bank, dan koleksi aksesoris smartphone kelas dunia.</p>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+
+        <!-- ================= LAYANAN PULSA & DATA ================= -->
+        <h2 id="pulsa" class="section-title">1. Layanan Isi Pulsa & Paket Data</h2>
+        <div class="grid-pulsa">
+            
+            <!-- FORM KIRI -->
+            <div class="form-card">
+                <div class="form-group">
+                    <label for="nohp"><i class="fa-solid fa-phone" style="color: #2ecc71;"></i> Nomor Handphone</label>
+                    <input type="number" id="nohp" placeholder="Contoh: 081234567xxx">
+                </div>
+                <div class="form-group">
+                    <label for="operator"><i class="fa-solid fa-tower-cell" style="color: #2ecc71;"></i> Pilih Operator</label>
+                    <select id="operator">
+                        <option value="telkomsel">Telkomsel</option>
+                        <option value="indosat">Indosat Ooredoo</option>
+                        <option value="xl">XL Axiata</option>
+                        <option value="three">Three (3)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nominal"><i class="fa-solid fa-wallet" style="color: #2ecc71;"></i> Nominal Pulsa (Mulai 5.000)</label>
+                    <select id="nominal">
+                        <option value="5000">Pulsa Rp 5.000 (Harga: Rp 7.000)</option>
+                        <option value="10000">Pulsa Rp 10.000 (Harga: Rp 12.000)</option>
+                        <option value="20000">Pulsa Rp 20.000 (Harga: Rp 22.000)</option>
+                        <option value="50000">Pulsa Rp 50.000 (Harga: Rp 52.000)</option>
+                        <option value="100000">Pulsa Rp 100.000 (Harga: Rp 101.500)</option>
+                    </select>
+                </div>
+                <button onclick="beliPulsa()" class="btn-submit">Kirim Sekarang <i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+
+            <!-- TABEL KANAN -->
+            <div class="table-card">
+                <h3 style="margin-bottom: 15px; font-size: 16px; font-weight: 700;">Daftar Paket Hemat Populer</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Paket</th>
+                            <th>Kuota</th>
+                            <th>Harga</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge-operator bg-tsel">Telkomsel</span></td>
+                            <td>Internet Harian</td>
+                            <td>1 GB (1 Hari)</td>
+                            <td style="font-weight: 700; color: #2ecc71;">Rp 5.000</td>
+                            <td><button onclick="pilihPaket('Telkomsel 1GB', 5000)" class="btn-table">Pilih</button></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge-operator bg-xl">XL Axiata</span></td>
+                            <td>Xtra Sederhana</td>
+                            <td>3 GB (3 Hari)</td>
+                            <td style="font-weight: 700; color: #2ecc71;">Rp 12.000</td>
+                            <td><button onclick="pilihPaket('XL 3GB', 12000)" class="btn-table">Pilih</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- ================= ATM MINI ================= -->
+        <h2 id="atm" class="section-title">2. Agen Resmi ATM Mini</h2>
+        <div class="grid-cards">
+            
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1d704d3?w=500" class="card-img" alt="Tarik Tunai">
+                </div>
+                <div class="card-content">
+                    <h3>Tarik Tunai / Gesek Kartu</h3>
+                    <p>Tarik dana tunai langsung dari tabungan Anda menggunakan semua jaringan bank nasional (GPN/Visa/Mastercard).</p>
+                    <div class="card-price" style="font-size: 14px; color: #718096;">Admin Rendah & Transparan</div>
+                    <button onclick="pesanLayanan('Tarik Tunai')" class="btn-card" style="background: #1a202c;">Mulai Tarik Dana</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=500" class="card-img" alt="Transfer">
+                </div>
+                <div class="card-content">
+                    <h3>Transfer Antar Bank Realtime</h3>
+                    <p>Kirim dana aman ke rekening bank manapun di seluruh Indonesia detik ini juga. Cepat tanpa antrean panjang.</p>
+                    <div class="card-price" style="font-size: 16px;">Mulai Rp 5.000</div>
+                    <button onclick="pesanLayanan('Transfer Bank')" class="btn-card" style="background: #1a202c;">Kirim Transfer</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= ELEKTRONIK GADGET ================= -->
+        <h2 id="gadget" class="section-title">3. Elektronik Gadget & Aksesoris</h2>
+        <div class="grid-cards">
+            
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1608248597481-496100c80836?w=500" class="card-img" alt="Powerbank Standard">
+                </div>
+                <div class="card-content">
+                    <h3>Powerbank Fast Charging 10K</h3>
+                    <p>Solusi baterai darurat yang praktis dan efisien untuk pemakaian harian gadget Anda.</p>
+                    <div class="card-price">Rp 145.000</div>
+                    <button onclick="tambahBarang('Powerbank Standard')" class="btn-card">Ambil Produk</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500" class="card-img" alt="Smartwatch Standard">
+                </div>
+                <div class="card-content">
+                    <h3>Smartwatch Sport Tracker</h3>
+                    <p>Dilengkapi fitur pemantau langkah, kalori, olahraga, dan sinkronisasi notifikasi pintar.</p>
+                    <div class="card-price">Rp 299.000</div>
+                    <button onclick="tambahBarang('Smartwatch Standard')" class="btn-card">Ambil Produk</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= SLIDE PALING BAWAH: ORAIMO ZONE ================= -->
+        <h2 id="oraimo" class="section-title oraimo-title">4. <i class="fa-solid fa-crown" style="color: #ffcc00;"></i> Produk Eksklusif oraimo</h2>
+        <div class="grid-cards">
+            
+            <!-- oraimo 1 -->
+            <div class="card oraimo-card">
+                <div class="card-img-wrapper">
+                    <span class="badge-premium">Garansi Resmi</span>
+                    <img src="https://images.unsplash.com/photo-1609592424109-dd9892f1b177?w=500" class="card-img" alt="oraimo Powerbank">
+                </div>
+                <div class="card-content">
+                    <h3>oraimo Toast 10 Flash</h3>
+                    <p>Desain ultra-slim berkapasitas 10000mAh dengan pengisian super cepat 20W Fast Charging.</p>
+                    <div class="card-price" style="color:#d69e2e;">Rp 169.000</div>
+                    <button onclick="tambahBarang('oraimo Toast 10')" class="btn-card btn-oraimo">Beli oraimo <i class="fa-solid fa-basket-shopping"></i></button>
+                </div>
+            </div>
+
+            <!-- oraimo 2 -->
+            <div class="card oraimo-card">
+                <div class="card-img-wrapper">
+                    <span class="badge-premium">Best Audio</span>
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500" class="card-img" alt="oraimo FreePods">
+                </div>
+                <div class="card-content">
+                    <h3>oraimo FreePods 4 TWS</h3>
+                    <p>Dilengkapi fitur Active Noise Cancellation (ANC) dan dentuman bass super mantap (HeavyBass).</p>
+                    <div class="card-price" style="color:#d69e2e;">Rp 289.000</div>
+                    <button onclick="tambahBarang('oraimo FreePods 4')" class="btn-card btn-oraimo">Beli oraimo <i class="fa-solid fa-basket-shopping"></i></button>
+                </div>
+            </div>
+
+            <!-- oraimo 3 -->
+            <div class="card oraimo-card">
+                <div class="card-img-wrapper">
+                    <span class="badge-premium">Premium Tech</span>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500" class="card-img" alt="oraimo Watch">
+                </div>
+                <div class="card-content">
+                    <h3>oraimo Watch 4 Plus</h3>
+                    <p>Layar megah 2.01'' HD Display, bisa telepon via Bluetooth, dan tersertifikasi IP68 tahan air.</p>
+                    <div class="card-price" style="color:#d69e2e;">Rp 399.000</div>
+                    <button onclick="tambahBarang('oraimo Watch 4 Plus')" class="btn-card btn-oraimo">Beli oraimo <i class="fa-solid fa-basket-shopping"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>&copy; 2026 <b>Floracell Digital Hub</b>. All Rights Reserved.</p>
+        <p class="footer-sub"><i class="fa-solid fa-location-dot"></i> Jl. Raya Flora No. 12 | <i class="fa-brands fa-whatsapp"></i> WhatsApp Admin: 0812-XXXX-XXXX</p>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function beliPulsa() {
+            var nomor = document.getElementById('nohp').value;
+            if(nomor == "") {
+                alert("⚠️ Oops! Mohon masukkan nomor handphone Anda terlebih dahulu.");
+            } else {
+                alert("✅ Transaksi Terkirim! Pulsa untuk nomor " + nomor + " sedang diproses di kasir Floracell.");
+            }
+        }
+
+        function pilihPaket(namaPaket, harga) {
+            var noHp = document.getElementById('nohp').value;
+            if(noHp == "") {
+                alert("⚠️ Ketik nomor HP Anda terlebih dahulu pada form di sebelah kiri sebelum memilih paket data!");
+            } else {
+                alert("📦 Paket Terpilih: " + namaPaket + " (Rp " + harga.toLocaleString('id-ID') + ") untuk nomor " + noHp + ". Segera diselesaikan di kasir.");
+            }
+        }
+
+        function pesanLayanan(namaLayanan) {
+            alert("🛎️ Anda memilih layanan: " + namaLayanan + ". Silakan datangi meja konter utama Floracell untuk penyelesaian.");
+        }
+
+        function tambahBarang(namaBarang) {
+            alert("🛍️ Berhasil! " + namaBarang + " dimasukkan ke dalam keranjang transaksi Floracell Anda.");
+        }
+    </script>
+
+</body>
+</html>
